@@ -15,7 +15,11 @@
                 </div>
                 <div class="col-md-2">
                     <select name="variant" id="" class="form-control">
-
+                        @foreach($variants as $variant)
+                        <optgroup label="{{ $variant->title }}">
+                            <option>ff</option>
+                        </optgroup>
+                        @endforeach
                     </select>
                 </div>
 
@@ -54,13 +58,15 @@
                 @foreach($products as $product)
                     <tr>
                         <td>1</td>
-                        <td>{{ $product->title }}<br> Created at : {{ $product->created_at }}</td>
+                        <td>{{ $product->title }}<br> Created at : {{ $product->created_at}}</td>
                         <td>{{ $product->description }}</td>
                         <td>
                             <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
 
                                 <dt class="col-sm-3 pb-0">
-                                    SM/ Red/ V-Nick
+                                    @foreach($product->productvariant as $variant)
+                                    {{ $variant->variant }}/
+                                    @endforeach
                                 </dt>
                                 <dd class="col-sm-9">
                                     <dl class="row mb-0">
@@ -90,7 +96,7 @@
         <div class="card-footer">
             <div class="row justify-content-between">
                 <div class="col-md-6">
-                    <p>Showing 1 to 10 out of 100</p>
+                    <p> Showing {{ $products->firstItem() }} to {{ $products->lastItem() }}  out of  {{$products->total()}} </p>
                 </div>
                 <div class="col-md-2">
 

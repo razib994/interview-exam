@@ -19,9 +19,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with('productvariant')->paginate(2);
-        dd($products);
-
-        return view('products.index',['products' => $products]);
+        $variants = Variant::all();
+        return view('products.index',['products' => $products, 'variants' => $variants]);
     }
 
     /**
