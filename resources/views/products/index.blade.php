@@ -58,7 +58,7 @@
                 @foreach($products as $product)
                     <tr>
                         <td>1</td>
-                        <td>{{ $product->title }}<br> Created at : {{ $product->created_at}}</td>
+                        <td>{{ $product->title }}<br> Created at : {{ $product->created_at->diffForHumans()}}</td>
                         <td>{{ $product->description }}</td>
                         <td>
                             <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
